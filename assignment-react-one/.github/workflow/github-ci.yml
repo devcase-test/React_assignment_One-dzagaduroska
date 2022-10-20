@@ -1,0 +1,30 @@
+name: Sytac Assignment CI
+'on':
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        task-dir:
+          - task-bugsearch
+          - task-reactjs
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Build & Test
+        working-directory: ${{matrix.task-dir}}
+        run: |
+          npm ci
+          npm run build --if-present
+          npm run test:ci
