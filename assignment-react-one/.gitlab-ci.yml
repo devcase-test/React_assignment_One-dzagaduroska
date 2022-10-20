@@ -1,0 +1,18 @@
+image: node:latest
+install:
+  script:
+    - cd ${TASK}
+    - npm ci
+    - npm run test:ci
+    - cd ..
+  artifacts:
+    expire_in: 7 days
+    when: always
+    reports:
+      junit:
+        - ./**/junit.xml
+  parallel:
+    matrix:
+      TASK:
+        - task-bugsearch
+        - task-reactjs
