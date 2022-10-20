@@ -1,0 +1,18 @@
+{
+    "name": "sytac-devcase",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/marcosloic/sytac-devcase.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/marcosloic/sytac-devcase/issues"
+    },
+    "homepage": "https://gitlab.com/marcosloic/sytac-devcase#readme",
+    "devDependencies": {}
+}
